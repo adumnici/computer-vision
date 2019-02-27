@@ -16,79 +16,39 @@ const app = new Clarifai.App({
  apiKey: '669997d47f2f4c7f9e52e0a1ce9601b6'
 });
 
-const particleOptions = {
-  particles: {
-      number:{
-         value:80,
-         density: {
-            enable:true,
-            value_area:800
-         }
-      },
-      shape: {
-         type: "circle",
-         stroke: {
-            width: 0,
-            color: "#000000"
-         },
-         polygon: {
-            nb_sides: 5
-         }
-      },
-      color: {
-         value: "#ffffff"
-      },
-      opacity:{
-         value: 1,
-         random: false,
-         anim: {
-            enable: false,
-            speed: 1,
-            opacity_min: 1,
-            sync: true
-         }
-      },
+const particlesOptions = {
+   particles: {
+     number: {
+       value: 200,
+       density: {
+         enable: true,
+         value_area: 1000
+       }
+     }
    },
-   interactivity: {
-      detect_on: "window",
-      events: {
-         onhover: {
-            enable: true,
-            mode: "grab"
-         },
-         onclick: {
-            enable: true,
-            mode: "repulse"
-         },
-         resize: true
-      },
-      modes: {
-         grab: {
-            distance: 800,
-            line_linked: {
-               opacity: 1
-            }
-         },
-         bubble: {
-            distance: 800,
-            size: 80,
-            duration: 2,
-            opacity: 0.8,
-            speed: 3
-         },
-         repulse: {
-            distance: 400,
-            duration: 0.4
-         },
-         push: {
-            particles_nb: 4
-         },
-         remove: {
-            particles_nb: 2
+   "interactivity": {
+     "detect_on": "window",
+     "events": {
+       "onhover": {
+         "enable": true,
+         "mode": "repulse"
+       },
+       "onclick": {
+         "enable": true,
+         "mode": "push"
+       },
+       "resize": true
+     },
+     "modes": {
+       "grab": {
+         "distance": 800,
+         "line_linked": {
+           "opacity": 1
          }
-      }
-   }
-}
+       },
+     }
+   },
+ }
 
 class App extends Component {
   constructor(props) {
@@ -176,7 +136,7 @@ class App extends Component {
     return (
       <div className="App">
       <Particles className='particles'
-        params={particleOptions} />
+        params={particlesOptions} />
       <Navigation isSignedIn={this.state.isSignedIn} onRouteChange={this.onRouteChange}/>
       { this.state.route === 'home' ?
         <div>
